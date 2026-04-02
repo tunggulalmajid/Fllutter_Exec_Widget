@@ -1,8 +1,9 @@
+import 'package:exercise/tugas_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterprak2/home.dart';
+// import 'package:flutterprak2/home.dart';
 
 void main() {
-  runApp(const Home());
+  runApp(const TugasWidget());
 }
 
 class MyApp extends StatelessWidget {
