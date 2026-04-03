@@ -1,9 +1,9 @@
-import 'package:exercise/tugas_widget.dart';
+// import 'package:exercise/tugas_widget.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutterprak2/home.dart';
 
 void main() {
-  runApp(const TugasWidget());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -50,16 +50,77 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
         leading: IconButton(onPressed: () {}, icon: Icon(Icons.add)),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              Image.asset(
+                'lib/public/src/sebuah.png',
+                width: 300,
+                height: 300,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(height: 10),
+              Image.network(
+                'https://picsum.photos/id/237/200/300',
+                width: 300,
+                height: 300,
+                fit: BoxFit.cover,
+                // Error builder jika gambar gagal dimuat
+                errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
+              ),
+              const Text('You have pushed the button this many times:'),
+              Text(
+                '$_counter fdsfdjsfokdspofkdposkfpodkspofkdposkpfodkspkfdpskfpkdpsods',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              FilledButton(
+                onPressed: () {
+                  print("User menekan button daftar");
+                },
+                child: const Text('Daftar Sekarang'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  print('Elevatedbutton ditekan');
+                },
+                child: const Text('Lanjutkan'),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  print("User menekan button edit");
+                },
+                child: const Text('Edit Profil'),
+              ),
+              TextButton(
+                onPressed: () {
+                  print('TextButton ditekan');
+                },
+                child: const Text('Lihat Selengkapnya'),
+              ),
+              Material(
+                color: Colors.blue.shade100,
+                child: InkWell(
+                  onTap: () => print('Elemen diklik'),
+                  onLongPress: () => print('Ditekan lama'),
+                  splashColor: Colors.blue,
+                  child: const Padding(
+                    padding: EdgeInsets.all(24.0),
+                    child: Text('Klik Saya (Efek Ripple)'),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () => print('Ketuk sekali'),
+                onDoubleTap: () => print('Ketuk dua kali'),
+                onLongPress: () => print('Tekan lama dideteksi'),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Icon(Icons.touch_app, size: 50),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
