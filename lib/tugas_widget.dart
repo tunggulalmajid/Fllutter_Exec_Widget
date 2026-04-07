@@ -1,3 +1,4 @@
+import 'package:exercise/praktikum_widget_dasar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -262,150 +263,169 @@ class TugasWidget extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 10),
-
                 ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: data.length,
                   itemBuilder: (context, index) {
                     final item = data[index];
-                    return Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      elevation: 5,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          border: Border.all(color: Colors.grey, width: 2),
-                        ),
-                        width: double.infinity,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 15,
-                            right: 15,
-                            top: 25,
-                            bottom: 25,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) => Praktikum4(
+                                  nama: item["nama"].toString(),
+                                  deskripsi: item["deskripsi"].toString(),
+                                  volume: int.parse(item["volume"].toString()),
+                                  ph: double.parse(item["ph"].toString()),
+                                  ppm: int.parse(item["ppm"].toString()),
+                                  baterai: int.parse(
+                                    item["baterai"].toString(),
+                                  ),
+                                ),
                           ),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.grass,
-                                color: Colors.green[800]!,
-                                size: 100,
-                              ),
-                              SizedBox(width: 15),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "${item["nama"]}",
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 17,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
+                        );
+                      },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        elevation: 5,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color: Colors.grey, width: 2),
+                          ),
+                          width: double.infinity,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: 15,
+                              right: 15,
+                              top: 25,
+                              bottom: 25,
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.grass,
+                                  color: Colors.green[800]!,
+                                  size: 100,
+                                ),
+                                SizedBox(width: 15),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "${item["nama"]}",
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 17,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      softWrap: true,
+                                      maxLines: 3,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
-                                    softWrap: true,
-                                    maxLines: 3,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  SizedBox(height: 2),
-                                  Text(
-                                    "${item["deskripsi"]}",
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.normal,
+                                    SizedBox(height: 2),
+                                    Text(
+                                      "${item["deskripsi"]}",
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                      softWrap: true,
+                                      maxLines: 3,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
-                                    softWrap: true,
-                                    maxLines: 3,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  SizedBox(height: 5),
+                                    SizedBox(height: 5),
 
-                                  Row(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.water_drop_outlined,
-                                            color: Colors.blue[800]!,
-                                            size: 20,
-                                          ),
-                                          SizedBox(width: 5),
-                                          Text(
-                                            "${item["volume"]}%",
-                                            style: GoogleFonts.poppins(
-                                              fontSize: 12,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold,
+                                    Row(
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.water_drop_outlined,
+                                              color: Colors.blue[800]!,
+                                              size: 20,
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(width: 10),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "pH :",
-                                            style: GoogleFonts.poppins(
-                                              fontSize: 13,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold,
+                                            SizedBox(width: 5),
+                                            Text(
+                                              "${item["volume"]}%",
+                                              style: GoogleFonts.poppins(
+                                                fontSize: 12,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                             ),
-                                          ),
-                                          SizedBox(width: 5),
-                                          Text(
-                                            "${item["ph"]}",
-                                            style: GoogleFonts.poppins(
-                                              fontSize: 12,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold,
+                                          ],
+                                        ),
+                                        SizedBox(width: 10),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "pH :",
+                                              style: GoogleFonts.poppins(
+                                                fontSize: 13,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(width: 10),
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.nature_outlined,
-                                            color: Colors.green[800]!,
-                                            size: 20,
-                                          ),
-                                          SizedBox(width: 5),
-                                          Text(
-                                            "${item["ppm"]}",
-                                            style: GoogleFonts.poppins(
-                                              fontSize: 12,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold,
+                                            SizedBox(width: 5),
+                                            Text(
+                                              "${item["ph"]}",
+                                              style: GoogleFonts.poppins(
+                                                fontSize: 12,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 10),
-                                  Row(
-                                    children: [
-                                      Row(
-                                        children: List.generate(
-                                          int.parse(
-                                            item["baterai"].toString(),
-                                          ), // Jumlah pengulangan
-                                          (index) => const Icon(
-                                            Icons.circle,
-                                            size: 12,
-                                            color: Colors.green,
+                                          ],
+                                        ),
+                                        SizedBox(width: 10),
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.nature_outlined,
+                                              color: Colors.green[800]!,
+                                              size: 20,
+                                            ),
+                                            SizedBox(width: 5),
+                                            Text(
+                                              "${item["ppm"]}",
+                                              style: GoogleFonts.poppins(
+                                                fontSize: 12,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 10),
+                                    Row(
+                                      children: [
+                                        Row(
+                                          children: List.generate(
+                                            int.parse(
+                                              item["baterai"].toString(),
+                                            ), // Jumlah pengulangan
+                                            (index) => const Icon(
+                                              Icons.circle,
+                                              size: 12,
+                                              color: Colors.green,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
